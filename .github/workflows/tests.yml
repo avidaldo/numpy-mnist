@@ -1,0 +1,17 @@
+name: tests
+
+on: [push, pull_request]
+
+jobs:
+  exercises:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements.txt
+      # This repository checks its solution; a fork checks its owner's exercise notebook.
+      - run: pytest
+        env:
+          MNIST_NOTEBOOK: ${{ github.repository_owner == 'avidaldo' && 'mnist_numpy_solution.ipynb' || 'mnist_numpy.ipynb' }}
