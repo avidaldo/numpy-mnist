@@ -11,7 +11,7 @@ jobs:
         with:
           python-version: "3.13"
       - run: pip install -r requirements.txt
-      # This repository checks its solution; a fork checks its owner's exercise notebook.
+      # The original's own code checks its solution; a fork's code, pushed or in a pull request, its exercise notebook.
       - run: pytest
         env:
-          MNIST_NOTEBOOK: ${{ github.repository_owner == 'avidaldo' && 'mnist_numpy_solution.ipynb' || 'mnist_numpy.ipynb' }}
+          MNIST_NOTEBOOK: ${{ (github.event.pull_request.head.repo.owner.login || github.repository_owner) == 'avidaldo' && 'mnist_numpy_solution.ipynb' || 'mnist_numpy.ipynb' }}

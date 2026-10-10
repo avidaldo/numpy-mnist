@@ -2,7 +2,7 @@
 
 A first project with NumPy, and with the tools of every software project: Git, a fork, a virtual environment, tests and continuous integration.
 
-MNIST is a classic dataset of 70,000 handwritten digits, each a 28×28 grid of numbers. A set of images is therefore a NumPy array, and everything you do to images (scaling them, adding noise, shifting and cropping them) is array manipulation. The [exercises](mnist_numpy.ipynb) go from shapes and data types to normalisation without leakage, loops against vectorisation, and data augmentation by hand. Tests check your answers, and a [solution](mnist_numpy_solution.ipynb) compares alternative ways of solving each exercise.
+MNIST is a classic dataset of 70,000 handwritten digits, each a 28×28 grid of numbers. Loaded into Python, a set of images is just a NumPy array, of shape 60,000×28×28 for the training set, so everything you do to images (scaling them, adding noise, shifting and cropping them) is array manipulation. The [exercises](mnist_numpy.ipynb) go from shapes and data types to normalisation without leakage, loops against vectorisation, and data augmentation by hand. Tests check your answers, and a [solution](mnist_numpy_solution.ipynb) compares alternative ways of solving each exercise.
 
 ## What you need
 
@@ -13,12 +13,18 @@ MNIST is a classic dataset of 70,000 handwritten digits, each a 28×28 grid of n
 
 ### 1. Fork and clone
 
+> [!TIP]
+> Read about [forks, branches and pull requests](https://github.com/avidaldo/ai/blob/main/pia/setup/git_github.md) if you are not familiar with them.
+
 A **fork** is your own copy of this repository on GitHub: you can push to it, and the original stays as it is. Press *Fork* at the top of this page, then clone your fork to your computer:
 
 ```bash
 git clone https://github.com/<your-username>/numpy-mnist.git
 cd numpy-mnist
 ```
+
+> [!IMPORTANT]
+> For feedback, the teacher needs to identify who is doing the exercises, so please write your GitHub profile URL [in the Moodle course](https://fpadistancia.edu.xunta.gal/mod/feedback/view.php?id=2318916&forceview=1).
 
 ### 2. Create the environment
 
@@ -67,25 +73,34 @@ git commit -m "Exercise 7: one-hot labels"
 git push -u origin exercises     # the first time; then just git push
 ```
 
-### 6. Review your work in a pull request
+> [!TIP]
+> Try a first pass on your own. You can use an AI assistant to help you, but **make sure you understand every solution**: the point is to learn how arrays and NumPy work and how to process images with them, and to work on a project with Git, GitHub, tests and continuous integration.
 
-A **pull request** proposes the commits of a branch for merging, and shows them as a diff that others can comment on. Open one from `exercises` into the `main` branch **of your fork**: on GitHub, check that the base repository is your fork, not the original. Read it as a reviewer would: the diff, the result of the tests, what you would change. Then merge it.
+### 6. Open a pull request for feedback
 
-To get feedback from someone else, share the link to your pull request. Pull requests to the original repository are welcome for improving the exercises themselves, not for solutions.
+A **pull request** proposes the commits of a branch for merging into another branch, and shows them as a diff that others can comment on. Once you have solved some exercises, open one from the `exercises` branch of your fork into the `main` branch of this repository: on your fork's page on GitHub, press *Contribute*, then *Open pull request*. Before you send it, read it as a reviewer would: the diff, the result of the tests, what you would change.
+
+The tests run on your pull request, and the feedback comes as comments on its diff. Keep pushing to `exercises`: the pull request updates itself with every new commit. When the review is done, it is closed without merging, so that `main` keeps the exercises unsolved for everyone.
+
+Pull requests that improve the exercises themselves (a typo, an unclear statement, a missing test) are welcome, and those are merged. Send them from a branch of their own, not from `exercises`.
 
 ### 7. Compare with the solution
 
-Open [`mnist_numpy_solution.ipynb`](mnist_numpy_solution.ipynb) after trying each exercise. It compares several ways of solving most of them, and explains which one is better and why. To see the tests pass on it:
+Open [`mnist_numpy_solution.ipynb`](mnist_numpy_solution.ipynb) after trying each exercise. It compares several ways of solving most of them, and explains which one is better and why. To see the tests pass on it, on Linux or macOS:
 
 ```bash
 MNIST_NOTEBOOK=mnist_numpy_solution.ipynb uv run pytest
 ```
 
-On Windows, in PowerShell: `$env:MNIST_NOTEBOOK="mnist_numpy_solution.ipynb"; uv run pytest`.
+and on Windows, in PowerShell:
+
+```powershell
+$env:MNIST_NOTEBOOK="mnist_numpy_solution.ipynb"; uv run pytest
+```
 
 ## Working with an AI assistant
 
-Do a first pass without one: the point is to learn how arrays behave, and you can only judge an assistant's answer once you know that. Then ask an assistant for another way to solve two of the exercises, time both versions, and write down which one is better and why.
+Once you have solved the exercises, ask an assistant for another way to solve two of them, time both versions, and write down which one is better and why.
 
 ## Keeping your fork up to date
 
