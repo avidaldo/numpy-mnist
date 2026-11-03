@@ -185,7 +185,7 @@ Por eso seleccionamos
 [ 0, :] Borde Superior  
 [-1, :] Borde Inferior
 [ :, 0] Borde izquierdo 
-[ :,-1] Borde derecho
+[ :,-1] Borde derecho   
 
 """
 
@@ -195,13 +195,29 @@ Then compute the same sum correctly, and store in n_overflowed_pixels the number
 of pixels where the two results differ. Why do they differ?
 
 """
+"""
 print("Ejercicio 6\n")
 
-info="n_overflowed_pixels=np.max(X_train\\[0\\])*2 => Daría error\n Debemos convertir el resultado de np.max que es de tipo uint8 (0 255 bits) a int"
-print("Nota ",info,"\n")
+Si sumamos directamente los valores de X_train
+Como solo almacena enteros uint8 (máximo hasta 255)
+habría o podría haber "desbordamiento", sumas que superasen
+ese máximo.
+Por eso hay que convertirlo a un tipo de dato que pueda
+almacenar ese tamaño
+"""
+print("Ejercicio 6\n")
+print("Suma directa\n")
+suma=X_train[0]+X_train[0]
+print(suma.max())
+print("suma correcta, convertimos a int32 con astype()")
+suma_correcta=X_train[0].astype(np.int32)+X_train[0].astype(np.int32)
+print(suma_correcta.max())
+# Hay otra forma pero esta me gusta más
+# Como solo queremos saber cuanto desborda, siempre
+# que sea mayor = que 128 desborda
+n_overflowed_pixels = np.count_nonzero(X_train[0] >= 128)
+# Son matrices no es lo mismo Multiplicar que Sumar!!!!
 
-n_overflowed_pixels=int(np.max(X_train[0]))*2
-print("n_overflowed_pixels => ",n_overflowed_pixels)
 
 """
 7. One-hot encoding
