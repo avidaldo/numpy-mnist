@@ -332,3 +332,17 @@ print("Media estandarizada de X_test ",X_test_standardized.mean(),"\n")
 print("Comparación\n")
 print("Antes  X_train_norm[0,10,10] \n",X_train_norm[0,10,10],"\n")
 print("Despues X_train_standardized[0,10,10]\n",X_train_standardized[0,10,10],"\n")
+
+print ("Ejercicio 12")
+
+"""
+12. Standardise X_train_norm, the images scaled to [0, 1], the same way, 
+as X_train_norm_standardized. Check with np.allclose that it equals X_train_standardized. 
+Why must they be equal?
+"""
+
+X_train_norm_standardized=(X_train_norm - X_train_norm.mean())/X_train_norm.std()
+if np.allclose(X_train_norm_standardized,X_train_standardized):
+    print("\nX_train_norm_standardized y X_train_standardized son aproximadamente iguales")
+print("\nLos valores son practicamente iguales debido a todos los valores se dividen entre\n"
+    "255 por lo tanto ese factor se cancela al estandarizar")
