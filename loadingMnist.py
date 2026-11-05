@@ -240,7 +240,7 @@ print("Ejercicio 7\n")
 
 print("Empleamos la función np.eye\\(\\) que crea una matriz identidad de 10x10\n")
 y_train_onehot=np.eye(10,dtype=int)[y_train]
-y_test_onehot=np.eye(10,dtype=int)[y_train]
+y_test_onehot=np.eye(10,dtype=int)[y_test]
 print("y_train_onehot=> ",y_train_onehot,end=("\n"))
 print("y_test_onehot=> ",y_test_onehot,end=("\n"))
 
