@@ -1,4 +1,5 @@
 #pytestSpot.py
+# Por markomorko ;p
 """
 Para facilitar la lectura de la salida de pytest
 uso:
