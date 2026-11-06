@@ -1,0 +1,495 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.4, pytest-9.2.0, pluggy-1.7.0
+rootdir: /home/marko/Documentos/Cursos/IA_BigData_CE31FC005200/MP5073_PIA/numpy-mnist
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.16.0, platformdirs-4.14.5
+collected 28 items
+
+tests/test_mnist_numpy.py F..........FFFFFFFFFFFFFFFFF                   [100%]
+
+=================================== FAILURES ===================================
+______________________ test_notebook_runs_without_errors _______________________
+
+run = {'namespace': {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', ...one, '__loader__': None, ...}, 'failed_cells': ["cell 48: NameError: name 'X_train_norm_standardized' is not defined"]}
+
+    def test_notebook_runs_without_errors(run: dict[str, Any]) -> None:
+>       assert not run["failed_cells"], "Some cells raise an error:\n" + "\n".join(run["failed_cells"])
+E       AssertionError: Some cells raise an error:
+E         cell 48: NameError: name 'X_train_norm_standardized' is not defined
+E       assert not ["cell 48: NameError: name 'X_train_norm_standardized' is not defined"]
+
+tests/test_mnist_numpy.py:61: AssertionError
+---------------------------- Captured stdout setup -----------------------------
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   3  18  18  18 126 136 175  26 166 255 247 127   0   0   0   0
+   0   0   0   0   0   0   0   0  30  36  94 154 170 253 253 253 253 253 225 172 253 242 195  64   0   0   0   0
+   0   0   0   0   0   0   0  49 238 253 253 253 253 253 253 253 253 251  93  82  82  56  39   0   0   0   0   0
+   0   0   0   0   0   0   0  18 219 253 253 253 253 253 198 182 247 241   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0  80 156 107 253 253 205  11   0  43 154   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0  14   1 154 253  90   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0 139 253 190   2   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0  11 190 253  70   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0  35 241 225 160 108   1   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0  81 240 253 253 119  25   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0  45 186 253 253 150  27   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0  16  93 252 253 187   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0 249 253 249  64   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0  46 130 183 253 253 207   2   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0  39 148 229 253 253 253 250 182   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0  24 114 221 253 253 253 253 201  78   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0  23  66 213 253 253 253 253 198  81   2   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0  18 171 219 253 253 253 253 195  80   9   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0  55 172 226 253 253 253 253 244 133  11   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0 136 253 253 253 212 135 132  16   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+[[5 0 4 1 9 2 1 3 1 4]
+ [3 5 3 6 1 7 2 8 6 9]
+ [4 0 9 1 1 2 4 3 2 7]
+ [3 8 6 9 0 5 6 0 7 6]
+ [1 8 7 9 3 9 8 5 9 3]
+ [3 0 7 4 9 8 0 9 4 1]
+ [4 4 6 0 4 5 6 1 0 0]
+ [1 7 1 6 3 0 2 1 1 7]
+ [9 0 2 6 7 8 3 9 0 4]
+ [6 7 4 6 8 0 7 8 3 1]]
+Éxito => son cero
+Hay  813  imágenes que tocan el borde
+Ejercicio 6
+
+Suma directa
+
+254
+suma correcta, convertimos a int32 con astype()
+510
+Comprobamos si los valores son mayores o iguales a 128, si son mayores al sumar desbordará
+Empleamos la función np.eye\(\) que crea una matriz identidad de 10x10
+
+y_train_onehot=>  [[0 0 0 ... 0 0 0]
+ [1 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ ...
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 1 0]]
+y_test_onehot=>  [[0 0 0 ... 1 0 0]
+ [0 0 1 ... 0 0 0]
+ [0 1 0 ... 0 0 0]
+ ...
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]
+ [0 0 0 ... 0 0 0]]
+Ejercicio 8
+Datos de los pixels de las imágenes de entrenamiento
+
+Máximo => :::255::: Mínino => :::0::: Media => :::33.318421449829934::: Desviación estándar => :::78.56748998339798 :::Ejercicio 10
+pixel_norm_mean =>  0.13066047  pixel_norm_std => 0.3081078
+Ejercicio 11
+Media estandarizada de X_train =>  2.2421078e-08 
+
+Desviación  estandar de X_test =>  1.0 
+
+Comparación
+
+Antes  X_train_norm[0,10,10] 
+ 0.003921569 
+
+Despues X_train_standardized[0,10,10]
+ -0.411346 
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 2[39m
+[32m      1[39m X_trainnorm_standardized=(X_train_norm - X_train_norm.mean())/X_train_norm.std()
+[32m----> [39m[32m2[39m [38;5;28;01mif[39;00m np.allclose([30;43mX_train_norm_standardized[39;49m,X_train_standardized):
+[32m      3[39m     [38;5;28mprint[39m([33m"[39m[38;5;130;01m\n[39;00m[33mX_train_norm_standardized y X_train_standardized son aproximadamente iguales[39m[33m"[39m)
+[32m      4[39m [38;5;28mprint[39m([33m"[39m[38;5;130;01m\n[39;00m[33mLos valores son practicamente iguales debido a todos los valores se dividen entre[39m[38;5;130;01m\n[39;00m[33m"[39m
+[32m      5[39m     [33m"[39m[33m255 por lo tanto ese factor se cancela al estandarizar[39m[33m"[39m)
+
+[31mNameError[39m: name 'X_train_norm_standardized' is not defined
+__________ test_standardizing_normalized_images_gives_the_same_result __________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+
+    def test_standardizing_normalized_images_gives_the_same_result(ns: dict[str, Any]) -> None:
+>       assert np.allclose(get(ns, "X_train_norm_standardized"), get(ns, "X_train_standardized"), atol=1e-5)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'X_train_norm_standardized'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `X_train_norm_standardized` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+__________________________ test_normalize_with_loops ___________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+
+    def test_normalize_with_loops(ns: dict[str, Any]) -> None:
+>       normalize_with_loops = get(ns, "normalize_with_loops")
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:139: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'normalize_with_loops'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `normalize_with_loops` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+______________________________ test_noisy_images _______________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+
+    def test_noisy_images(ns: dict[str, Any]) -> None:
+        X_train = ns["X_train"]
+>       X_train_noisy = get(ns, "X_train_noisy")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'X_train_noisy'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `X_train_noisy` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+_____________________________ test_binarize_image ______________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+
+    def test_binarize_image(ns: dict[str, Any]) -> None:
+>       binarize_image = get(ns, "binarize_image")
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'binarize_image'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `binarize_image` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+____________________ test_binarized_sets[X_train_binarized] ____________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'X_train_binarized'
+
+    @pytest.mark.parametrize("name", ["X_train_binarized", "X_train_noisy_binarized"])
+    def test_binarized_sets(ns: dict[str, Any], name: str) -> None:
+>       binarized = get(ns, name)
+                    ^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'X_train_binarized'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `X_train_binarized` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+_________________ test_binarized_sets[X_train_noisy_binarized] _________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'X_train_noisy_binarized'
+
+    @pytest.mark.parametrize("name", ["X_train_binarized", "X_train_noisy_binarized"])
+    def test_binarized_sets(ns: dict[str, Any], name: str) -> None:
+>       binarized = get(ns, name)
+                    ^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'X_train_noisy_binarized'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `X_train_noisy_binarized` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+____________________________ test_shift_image[10-0] ____________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+dx = 10, dy = 0
+
+    @pytest.mark.parametrize(("dx", "dy"), [(10, 0), (-10, 0), (0, 10), (0, -10), (3, -2), (0, 0)])
+    def test_shift_image(ns: dict[str, Any], dx: int, dy: int) -> None:
+>       shift_image = get(ns, "shift_image")
+                      ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'shift_image'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `shift_image` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+___________________________ test_shift_image[-10-0] ____________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+dx = -10, dy = 0
+
+    @pytest.mark.parametrize(("dx", "dy"), [(10, 0), (-10, 0), (0, 10), (0, -10), (3, -2), (0, 0)])
+    def test_shift_image(ns: dict[str, Any], dx: int, dy: int) -> None:
+>       shift_image = get(ns, "shift_image")
+                      ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'shift_image'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `shift_image` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+____________________________ test_shift_image[0-10] ____________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+dx = 0, dy = 10
+
+    @pytest.mark.parametrize(("dx", "dy"), [(10, 0), (-10, 0), (0, 10), (0, -10), (3, -2), (0, 0)])
+    def test_shift_image(ns: dict[str, Any], dx: int, dy: int) -> None:
+>       shift_image = get(ns, "shift_image")
+                      ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'shift_image'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `shift_image` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+___________________________ test_shift_image[0--10] ____________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+dx = 0, dy = -10
+
+    @pytest.mark.parametrize(("dx", "dy"), [(10, 0), (-10, 0), (0, 10), (0, -10), (3, -2), (0, 0)])
+    def test_shift_image(ns: dict[str, Any], dx: int, dy: int) -> None:
+>       shift_image = get(ns, "shift_image")
+                      ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'shift_image'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `shift_image` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+____________________________ test_shift_image[3--2] ____________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+dx = 3, dy = -2
+
+    @pytest.mark.parametrize(("dx", "dy"), [(10, 0), (-10, 0), (0, 10), (0, -10), (3, -2), (0, 0)])
+    def test_shift_image(ns: dict[str, Any], dx: int, dy: int) -> None:
+>       shift_image = get(ns, "shift_image")
+                      ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'shift_image'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `shift_image` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+____________________________ test_shift_image[0-0] _____________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+dx = 0, dy = 0
+
+    @pytest.mark.parametrize(("dx", "dy"), [(10, 0), (-10, 0), (0, 10), (0, -10), (3, -2), (0, 0)])
+    def test_shift_image(ns: dict[str, Any], dx: int, dy: int) -> None:
+>       shift_image = get(ns, "shift_image")
+                      ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'shift_image'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `shift_image` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+____________________________ test_shifted_right_10 _____________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+
+    def test_shifted_right_10(ns: dict[str, Any]) -> None:
+        X_train = ns["X_train"]
+>       shifted = get(ns, "X_train_shifted_right_10")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:188: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'X_train_shifted_right_10'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `X_train_shifted_right_10` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+_______________________________ test_find_limits _______________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+
+    def test_find_limits(ns: dict[str, Any]) -> None:
+>       find_limits = get(ns, "find_limits")
+                      ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:195: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'find_limits'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `find_limits` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+____________________________ test_crop_image_limits ____________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+
+    def test_crop_image_limits(ns: dict[str, Any]) -> None:
+>       crop_image_limits = get(ns, "crop_image_limits")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:204: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'crop_image_limits'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `crop_image_limits` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+_______________ test_random_shift_keeps_every_digit_in_the_frame _______________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+
+    def test_random_shift_keeps_every_digit_in_the_frame(ns: dict[str, Any]) -> None:
+        X_train = ns["X_train"]
+>       shifted = get(ns, "X_train_shifted")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'X_train_shifted'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `X_train_shifted` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+______________________________ test_augmented_set ______________________________
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+
+    def test_augmented_set(ns: dict[str, Any]) -> None:
+        X_train, y_train = ns["X_train"], ns["y_train"]
+>       augmented = get(ns, "X_train_augmented")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_mnist_numpy.py:222: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ns = {'__name__': '__main__', '__doc__': 'Automatically created module for IPython interactive environment', '__package__': None, '__loader__': None, ...}
+name = 'X_train_augmented'
+
+    def get(ns: dict[str, Any], name: str) -> Any:
+        if name not in ns:
+>           pytest.fail(f"`{name}` is not defined yet: solve the exercise that asks for it")
+E           Failed: `X_train_augmented` is not defined yet: solve the exercise that asks for it
+
+tests/test_mnist_numpy.py:56: Failed
+=========================== short test summary info ============================
+FAILED tests/test_mnist_numpy.py::test_notebook_runs_without_errors - Asserti...
+FAILED tests/test_mnist_numpy.py::test_standardizing_normalized_images_gives_the_same_result
+FAILED tests/test_mnist_numpy.py::test_normalize_with_loops - Failed: `normal...
+FAILED tests/test_mnist_numpy.py::test_noisy_images - Failed: `X_train_noisy`...
+FAILED tests/test_mnist_numpy.py::test_binarize_image - Failed: `binarize_ima...
+FAILED tests/test_mnist_numpy.py::test_binarized_sets[X_train_binarized] - Fa...
+FAILED tests/test_mnist_numpy.py::test_binarized_sets[X_train_noisy_binarized]
+FAILED tests/test_mnist_numpy.py::test_shift_image[10-0] - Failed: `shift_ima...
+FAILED tests/test_mnist_numpy.py::test_shift_image[-10-0] - Failed: `shift_im...
+FAILED tests/test_mnist_numpy.py::test_shift_image[0-10] - Failed: `shift_ima...
+FAILED tests/test_mnist_numpy.py::test_shift_image[0--10] - Failed: `shift_im...
+FAILED tests/test_mnist_numpy.py::test_shift_image[3--2] - Failed: `shift_ima...
+FAILED tests/test_mnist_numpy.py::test_shift_image[0-0] - Failed: `shift_imag...
+FAILED tests/test_mnist_numpy.py::test_shifted_right_10 - Failed: `X_train_sh...
+FAILED tests/test_mnist_numpy.py::test_find_limits - Failed: `find_limits` is...
+FAILED tests/test_mnist_numpy.py::test_crop_image_limits - Failed: `crop_imag...
+FAILED tests/test_mnist_numpy.py::test_random_shift_keeps_every_digit_in_the_frame
+FAILED tests/test_mnist_numpy.py::test_augmented_set - Failed: `X_train_augme...
+======================== 18 failed, 10 passed in 3.41s =========================

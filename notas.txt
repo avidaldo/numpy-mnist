@@ -1,0 +1,5 @@
+Clono el fork de numpy de mi repo
+$ git clone https://github.com/markomorko/numpy-mnist
+
+He configado el acceso desde Kubuntu.
+Hago el primer push desde Kubunto
