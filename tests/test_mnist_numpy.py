@@ -58,16 +58,19 @@ def get(ns: dict[str, Any], name: str) -> Any:
 
 
 def test_notebook_runs_without_errors(run: dict[str, Any]) -> None:
+    """The notebook runs from top to bottom without errors (all exercises)."""
     assert not run["failed_cells"], "Some cells raise an error:\n" + "\n".join(run["failed_cells"])
 
 
-def test_matrix_first_100_labels(ns: dict[str, Any]) -> None:
+def test_e1_matrix_first_100_labels(ns: dict[str, Any]) -> None:
+    """Exercise 1: 10×10 array with the first 100 labels."""
     labels = get(ns, "matrix_first_100_labels")
     assert labels.shape == (10, 10)
     assert np.array_equal(labels.ravel(), ns["y_train"][:100])
 
 
-def test_flattening(ns: dict[str, Any]) -> None:
+def test_e2_flattening(ns: dict[str, Any]) -> None:
+    """Exercise 2: flatten each 28×28 image to a vector of 784 pixels."""
     X_train_flat = get(ns, "X_train_flat")
     X_test_flat = get(ns, "X_test_flat")
     assert X_train_flat.shape == (60_000, 784)
@@ -75,13 +78,15 @@ def test_flattening(ns: dict[str, Any]) -> None:
     assert np.array_equal(X_train_flat[0], ns["X_train"][0].ravel())
 
 
-def test_plot_image_accepts_flat_and_square_images(ns: dict[str, Any]) -> None:
+def test_e3_plot_image_accepts_flat_and_square_images(ns: dict[str, Any]) -> None:
+    """Exercise 3: plot_image accepts a 28×28 image and a flat row of 784 pixels."""
     plot_image = get(ns, "plot_image")
     plot_image(ns["X_train"][0])
     plot_image(ns["X_train"][0].ravel())
 
 
-def test_n_touching_border(ns: dict[str, Any]) -> None:
+def test_e5_n_touching_border(ns: dict[str, Any]) -> None:
+    """Exercise 5: count the training images with ink in their first or last row or column."""
     X_train = ns["X_train"]
     expected = (
         X_train[:, 0, :].any(axis=1)
@@ -92,12 +97,14 @@ def test_n_touching_border(ns: dict[str, Any]) -> None:
     assert get(ns, "n_touching_border") == expected
 
 
-def test_n_overflowed_pixels(ns: dict[str, Any]) -> None:
+def test_e6_n_overflowed_pixels(ns: dict[str, Any]) -> None:
+    """Exercise 6: count the pixels where the uint8 sum overflows."""
     assert get(ns, "n_overflowed_pixels") == (ns["X_train"][0] >= 128).sum()
 
 
 @pytest.mark.parametrize("split", ["train", "test"])
-def test_onehot_encoding(ns: dict[str, Any], split: str) -> None:
+def test_e7_onehot_encoding(ns: dict[str, Any], split: str) -> None:
+    """Exercise 7: one-hot vectors, ten numbers, all 0 except a 1 at the position of the digit."""
     onehot = get(ns, f"y_{split}_onehot")
     labels = ns[f"y_{split}"]
     assert onehot.shape == (len(labels), 10)
@@ -106,7 +113,8 @@ def test_onehot_encoding(ns: dict[str, Any], split: str) -> None:
     assert np.array_equal(onehot.argmax(axis=1), labels)
 
 
-def test_normalization(ns: dict[str, Any]) -> None:
+def test_e9_normalization(ns: dict[str, Any]) -> None:
+    """Exercise 9: scale the training images to the range [0, 1] as float32."""
     X_train_norm = get(ns, "X_train_norm")
     assert X_train_norm.shape == (60_000, 28, 28)
     assert X_train_norm.dtype == np.float32
@@ -114,12 +122,14 @@ def test_normalization(ns: dict[str, Any]) -> None:
     assert X_train_norm.max() == 1
 
 
-def test_normalized_statistics(ns: dict[str, Any]) -> None:
+def test_e10_normalized_statistics(ns: dict[str, Any]) -> None:
+    """Exercise 10: mean and standard deviation of the pixels of the normalised images."""
     assert np.isclose(get(ns, "pixel_norm_mean"), 0.130660, atol=1e-5)
     assert np.isclose(get(ns, "pixel_norm_std"), 0.308108, atol=1e-5)
 
 
-def test_standardization_uses_training_statistics(ns: dict[str, Any]) -> None:
+def test_e11_standardization_uses_training_statistics(ns: dict[str, Any]) -> None:
+    """Exercise 11: standardise with the mean and standard deviation of the training images only."""
     X_train, X_test = ns["X_train"], ns["X_test"]
     X_train_standardized = get(ns, "X_train_standardized")
     X_test_standardized = get(ns, "X_test_standardized")
@@ -131,18 +141,21 @@ def test_standardization_uses_training_statistics(ns: dict[str, Any]) -> None:
     )
 
 
-def test_standardizing_normalized_images_gives_the_same_result(ns: dict[str, Any]) -> None:
+def test_e12_standardizing_normalized_images_gives_the_same_result(ns: dict[str, Any]) -> None:
+    """Exercise 12: standardising the normalised images gives the same result."""
     assert np.allclose(get(ns, "X_train_norm_standardized"), get(ns, "X_train_standardized"), atol=1e-5)
 
 
-def test_normalize_with_loops(ns: dict[str, Any]) -> None:
+def test_e13_normalize_with_loops(ns: dict[str, Any]) -> None:
+    """Exercise 13: normalise with Python loops, and measure the speed-up of the vectorised version."""
     normalize_with_loops = get(ns, "normalize_with_loops")
     sample = ns["X_train"][:3]
     assert np.allclose(normalize_with_loops(sample), sample / 255)
     assert get(ns, "speedup") > 5
 
 
-def test_noisy_images(ns: dict[str, Any]) -> None:
+def test_e14_noisy_images(ns: dict[str, Any]) -> None:
+    """Exercise 14: add Gaussian noise, keeping the type and range of the input."""
     X_train = ns["X_train"]
     X_train_noisy = get(ns, "X_train_noisy")
     assert X_train_noisy.shape == X_train.shape
@@ -151,7 +164,8 @@ def test_noisy_images(ns: dict[str, Any]) -> None:
     assert get(ns, "add_gaussian_noise")(X_train[:2], std=50).dtype == np.uint8
 
 
-def test_binarize_image(ns: dict[str, Any]) -> None:
+def test_e15_binarize_image(ns: dict[str, Any]) -> None:
+    """Exercise 15: 1 where a pixel is greater than the threshold and 0 elsewhere, for one image or many."""
     binarize_image = get(ns, "binarize_image")
     image = ns["X_train"][0]
     binary = binarize_image(image, threshold=128)
@@ -161,14 +175,16 @@ def test_binarize_image(ns: dict[str, Any]) -> None:
 
 
 @pytest.mark.parametrize("name", ["X_train_binarized", "X_train_noisy_binarized"])
-def test_binarized_sets(ns: dict[str, Any], name: str) -> None:
+def test_e15_e17_binarized_sets(ns: dict[str, Any], name: str) -> None:
+    """Exercises 15 and 17: the binarised training images, and the noisy ones binarised."""
     binarized = get(ns, name)
     assert binarized.shape == (60_000, 28, 28)
     assert set(np.unique(binarized)) == {0, 1}
 
 
 @pytest.mark.parametrize(("dx", "dy"), [(10, 0), (-10, 0), (0, 10), (0, -10), (3, -2), (0, 0)])
-def test_shift_image(ns: dict[str, Any], dx: int, dy: int) -> None:
+def test_e18_shift_image(ns: dict[str, Any], dx: int, dy: int) -> None:
+    """Exercise 18: move an image dx pixels right and dy pixels down, filling with 0."""
     shift_image = get(ns, "shift_image")
     image = ns["X_train"][0]
     expected = np.roll(image, (dy, dx), axis=(0, 1))
@@ -183,7 +199,8 @@ def test_shift_image(ns: dict[str, Any], dx: int, dy: int) -> None:
     assert np.array_equal(shift_image(image, dx=dx, dy=dy), expected)
 
 
-def test_shifted_right_10(ns: dict[str, Any]) -> None:
+def test_e19_shifted_right_10(ns: dict[str, Any]) -> None:
+    """Exercise 19: shift every training image 10 pixels to the right."""
     X_train = ns["X_train"]
     shifted = get(ns, "X_train_shifted_right_10")
     assert shifted.shape == X_train.shape
@@ -191,7 +208,8 @@ def test_shifted_right_10(ns: dict[str, Any]) -> None:
     assert np.array_equal(shifted[:, :, 10:], X_train[:, :, :-10])
 
 
-def test_find_limits(ns: dict[str, Any]) -> None:
+def test_e20_find_limits(ns: dict[str, Any]) -> None:
+    """Exercise 20: the first and last rows and columns that contain ink."""
     find_limits = get(ns, "find_limits")
     X_train = ns["X_train"]
     assert tuple(find_limits(X_train[0])) == (5, 24, 4, 23)
@@ -200,7 +218,8 @@ def test_find_limits(ns: dict[str, Any]) -> None:
         assert tuple(find_limits(image)) == (rows.min(), rows.max(), cols.min(), cols.max())
 
 
-def test_crop_image_limits(ns: dict[str, Any]) -> None:
+def test_e21_crop_image_limits(ns: dict[str, Any]) -> None:
+    """Exercise 21: crop an image to its limits, keeping all the ink."""
     crop_image_limits = get(ns, "crop_image_limits")
     X_train = ns["X_train"]
     assert crop_image_limits(X_train[0]).shape == (20, 20)
@@ -208,7 +227,8 @@ def test_crop_image_limits(ns: dict[str, Any]) -> None:
         assert crop_image_limits(image).sum() == image.sum(), "The crop must keep all the ink"
 
 
-def test_random_shift_keeps_every_digit_in_the_frame(ns: dict[str, Any]) -> None:
+def test_e22_random_shift_keeps_every_digit_in_the_frame(ns: dict[str, Any]) -> None:
+    """Exercise 22: shift every image by a random amount, without ink leaving the frame."""
     X_train = ns["X_train"]
     shifted = get(ns, "X_train_shifted")
     assert shifted.shape == X_train.shape
@@ -217,7 +237,8 @@ def test_random_shift_keeps_every_digit_in_the_frame(ns: dict[str, Any]) -> None
     assert moved > 0.8, "Most images should actually move"
 
 
-def test_augmented_set(ns: dict[str, Any]) -> None:
+def test_e23_augmented_set(ns: dict[str, Any]) -> None:
+    """Exercise 23: join the original, noisy, binarised, noisy-binarised and shifted images, with labels."""
     X_train, y_train = ns["X_train"], ns["y_train"]
     augmented = get(ns, "X_train_augmented")
     labels = get(ns, "y_train_augmented")

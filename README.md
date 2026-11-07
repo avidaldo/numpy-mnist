@@ -53,6 +53,15 @@ uv run pytest        # with conda, or with the environment activated: pytest
 
 The tests run your notebook from top to bottom and check every name the exercises ask for. Before you solve anything, all of them fail but one, which checks that the notebook runs, and each failure names the exercise it is waiting for. The first run downloads MNIST (11 MB) into `data/`, which git ignores.
 
+Each test is named after the exercise it checks (`test_e7_onehot_encoding` checks exercise 7), so while you work on one exercise you can see only its results, or stop at the first failure:
+
+```bash
+uv run pytest -k e7_    # only the tests of exercise 7
+uv run pytest --sw      # stop at the first failing test; the next run starts from that one
+```
+
+`-k` selects every test whose name contains the text, so keep the underscore: `-k e1` would also select exercises 10 to 19. Both options still run the whole notebook: they shorten the output, not the run. Exercises 4, 8 and 16 ask for no name, so they have no test.
+
 ### 4. Turn on continuous integration
 
 The file `.github/workflows/tests.yml` asks GitHub to run the same tests on its own servers every time you push: that is **continuous integration** (CI). GitHub keeps workflows switched off in a new fork until you allow them: open the *Actions* tab of your fork and enable them. From then on, every commit you push shows a green tick when the tests pass, or a red cross with the failing tests in its log.
@@ -113,6 +122,6 @@ If this repository changes after you fork it, GitHub's *Sync fork* button, on yo
 | [`mnist_numpy.ipynb`](mnist_numpy.ipynb) | The exercises |
 | [`mnist_numpy_solution.ipynb`](mnist_numpy_solution.ipynb) | A solution, with alternatives compared |
 | [`vectorised_shift.ipynb`](vectorised_shift.ipynb) | Exercise 22's shift without a loop, checked and timed part by part |
-| [`tests/test_mnist_numpy.py`](tests/test_mnist_numpy.py) | The tests, one or more per exercise |
+| [`tests/test_mnist_numpy.py`](tests/test_mnist_numpy.py) | The tests, each named after the exercise it checks |
 | [`.github/workflows/tests.yml`](.github/workflows/tests.yml) | The continuous-integration workflow |
 | `requirements.txt`, `pytest.ini` | The packages, and the tests' settings (warnings count as errors) |
