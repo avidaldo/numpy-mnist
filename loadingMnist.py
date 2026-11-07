@@ -346,3 +346,55 @@ if np.allclose(X_train_norm_standardized,X_train_standardized):
     print("\nX_train_norm_standardized y X_train_standardized son aproximadamente iguales")
 print("\nLos valores son practicamente iguales debido a todos los valores se dividen entre\n"
     "255 por lo tanto ese factor se cancela al estandarizar")
+
+"""
+Ejercicio 13 
+13. Crea la función normalize_with_loops(images). Esta función debe escalar los valores
+de los píxeles de las imágenes al intervalo [0, 1], utilizando los bucles habituales de Python 
+para recorrer cada píxel, como si no dispusieses de las funciones de NumPy.
+
+Utilizando time.perf_counter(), compara el tiempo que tarda tu función en procesar las primeras 
+1.000 imágenes de entrenamiento con el que tarda la operación vectorizada de NumPy (images / 255) 
+en procesar esas mismas imágenes.
+
+Guarda en la variable speedup cuántas veces es más rápida la versión vectorizada.
+
+En el repositorio compare-python-c-efficiency se explica el motivo de esta diferencia de 
+rendimiento.
+"""
+#Creo la función normalize_with_loops(images) que recorre las imágenes y sus píxeles con bucles for
+def normalize_with_loops(images):
+    resultado = images.astype(float)
+
+    for i in range(len(resultado)):
+        for j in range(len(resultado[i])):
+            for k in range(len(resultado[i][j])):
+                resultado[i][j][k] /= 255
+
+    return resultado
+ 
+
+#Activamos time.perf_counter() para medir el tiempo de ejecución
+import time
+inicio_bucle_normal=time.perf_counter()
+
+#Llamo a la función
+normalize_with_loops(X_train[:1000])
+
+#termino de medir el tiempo
+fin_bucle_normal=time.perf_counter() - inicio_bucle_normal
+
+#Lo mostramos
+print("Tiempo de ejecución con bucles normales => ",fin_bucle_normal)
+
+#Hacemos lo mismo con la versión vectorizada de NumPy
+inicio_vectorizado=time.perf_counter()
+(X_train[:1000]/255)
+fin_vectorizado=time.perf_counter() - inicio_vectorizado
+
+#Lo mostramos
+print("Tiempo de ejecución con vectorizado => ",fin_vectorizado)    
+
+#Calculamos cuantas veces es más rápida la versión vectorizada
+speedup = fin_bucle_normal / fin_vectorizado
+print("La versión vectorizada es ",speedup," veces más rápida que la versión con bucles normales")
