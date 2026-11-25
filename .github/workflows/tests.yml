@@ -4,11 +4,18 @@ name: tests
 # code there, which GitHub holds for approval on every push of a contributor never merged.
 on: push
 
+# The tests only read the repository: the token gets nothing else, whatever the repository's settings.
+permissions:
+  contents: read
+
 jobs:
   exercises:
     runs-on: ubuntu-latest
     steps:
+      # pip's packages and the notebook run next: the checkout doesn't leave the token behind for them.
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"

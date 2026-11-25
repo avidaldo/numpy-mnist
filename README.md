@@ -109,7 +109,7 @@ $env:MNIST_NOTEBOOK="mnist_numpy_solution.ipynb"; uv run pytest
 
 ## Working with an AI assistant
 
-Once you have solved the exercises, ask an assistant for another way to solve two of them, time both versions, and write down which one is better and why.
+Once you have solved the exercises, ask an assistant for another way to solve two of them, check that its version returns the same result as yours (`np.array_equal`, or `np.allclose` for floats), and write down which one is better and why.
 
 ## Keeping your fork up to date
 
